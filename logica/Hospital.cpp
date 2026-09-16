@@ -19,12 +19,27 @@ Hospital::Hospital(){
     }
 }
 
-NodoServicio* Hospital::buscarServicio(string nombre) const; //recorre la lista y devuelve el servicio con ese nombre
+NodoServicio* Hospital::buscarServicio(string nombre) const{
+    NodoServicio* cursor = primerServicio;
+    while(cursor != nullptr){
+        if(cursor->getServicio() == nombre){ //buscar una manera para que no influyan las mayusculas y minusculas
+            return cursor;
+        }cursor = cursor->getNextServicio;
 
-void Hospital::derivarPaciente(Paciente p);//Segun el servicio se inserta el paciente en su lista interna
+    }return nullptr;// no se encontro el servicio
+}
 
-void Hospital::mostrarEstado(); //Recorre todos los servicios y muestra sus pacientes
+void Hospital::derivarPaciente(Paciente p){
+    
+    }
 
-void Hospital::mostrarServicio(string nombre); //Muestra los pacientes del servicio que se necesite
+void Hospital::mostrarEstado(){
 
-Hospital::~Hospital()
+}
+
+void Hospital::mostrarServicio(string nombre){
+    }
+
+Hospital::~Hospital(){
+
+}
