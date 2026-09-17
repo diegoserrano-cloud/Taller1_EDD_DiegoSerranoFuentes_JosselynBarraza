@@ -61,8 +61,36 @@ void Hospital::mostrarEstado(){
 }
 
 void Hospital::mostrarServicio(string nombre){
+    NodoServicio* servicio = buscarServicio(nombre);
+    if(servicio !=nullptr){
+        cout<<nombre<< ": "<<endl;
+        NodoPaciente* p = servicio->getPacienteLista();
+        while(p != nullptr){
+            cout<<"- "<< p->getPaciente().getNombre() << endl;
+
+            p = p->getNext();
+        }
+
+    }else{
+        //otro mensaje de que no se encontro
+    }
+
     }
 
 Hospital::~Hospital(){
+    NodoServicio* cursor = primerServicio;
+
+    while(cursor!= nullptr){
+        NodoPaciente* paciente = cursor->getPacienteLista();
+        NodoServicio* temporal = cursor;
+        while(paciente != nullptr){
+            NodoPaciente* temp = paciente;
+
+            paciente = paciente->getNext();
+            delete temp;
+
+        }cursor = cursor->getNextServicio();
+        delete temporal;
+    }
 
 }
