@@ -4,7 +4,7 @@ using namespace std;
 
 Hospital::Hospital(){
     string servicios[8] = {"Urgencias", "Medicina General", "Cardiología", "Neurología", 
-                            "Traumatología", "Cirugía", "Pediatría", "Hospitalización"}
+                            "Traumatología", "Cirugía", "Pediatría", "Hospitalización"};
     
     NodoServicio* anterior = nullptr;
     primerServicio = nullptr;
@@ -24,73 +24,88 @@ Hospital::Hospital(){
 NodoServicio* Hospital::buscarServicio(string nombre) const{
     NodoServicio* cursor = primerServicio;
     while(cursor != nullptr){
-        if(cursor->getServicio() == nombre){ //BUSCAR una manera para que no influyan las mayusculas y minusculas
+        if(cursor->getServicio() == nombre){ 
             return cursor;
-        }cursor = cursor->getNextServicio;
+        }
+        cursor = cursor->getNextServicio();
 
-    }return nullptr;// no se encontro el servicio
+    }
+    return nullptr; // no se encontro el servicio
 }
 
-void Hospital::derivarPaciente(Paciente p){
+void Hospital::derivarPaciente(Paciente p) {
     string servicio = p.getServicio();
     NodoServicio* nodoServicio = buscarServicio(servicio);
     if(nodoServicio != nullptr){
         NodoPaciente* nuevo = new NodoPaciente(p);
-        nuevo->setNext(nodoServicio->getPacienteLista());
-        nodoServicio->setPrimerPaciente(nuevo);
+        
+        NodoPaciente* primeroDelServicio = nodoServicio->getPacienteLista();
+
+        if (primeroDelServicio == nullptr) {
+            nodoServicio->setPrimerPaciente(nuevo);
+        } else {
+            NodoPaciente* cursor = primeroDelServicio;
+            while (cursor->getNext() != nullptr) {
+                cursor = cursor->getNext();
+            }
+            cursor->setNext(nuevo);
+        }
     }else{
-        //Dar un mensaje de que no se encontro el servicio sin cout 
+        cout << "No se encontro el servicio indicado: " << servicio << endl;
     }
     
+}
+
+void Hospital::atenderPaciente(Paciente p) {
+    derivarPaciente(p);
+    historial.apilar(p);
 }
 
 void Hospital::mostrarEstado(){
     NodoServicio* cursor = primerServicio;
     while(cursor!=nullptr){
-        cout<<cursor->getServicio<()<< ": " << endl;
+        cout<<cursor->getServicio()<< ": " << endl;
         NodoPaciente* paciente = cursor->getPacienteLista();
-
+ 
         while(paciente!=nullptr){
-            cout<<"- "<< paciente->getPaciente().getNombre() << endl;
-
+            cout<<"- "<<paciente->getPaciente().getNombre()<<endl;
             paciente = paciente->getNext();
         }
-
         cursor = cursor->getNextServicio();
     }
 }
 
-void Hospital::mostrarServicio(string nombre){
-    NodoServicio* servicio = buscarServicio(nombre);
-    if(servicio !=nullptr){
-        cout<<nombre<< ": "<<endl;
-        NodoPaciente* p = servicio->getPacienteLista();
-        while(p != nullptr){
-            cout<<"- "<< p->getPaciente().getNombre() << endl;
-
-            p = p->getNext();
+void Hospital::mostrarServicio(string nombre) {
+    NodoServicio* nodoServicio = buscarServicio(nombre);
+    if (nodoServicio != nullptr) {
+        cout << "Pacientes en el servicio " << nombre << ":" << endl;
+        NodoPaciente* paciente = nodoServicio->getPacienteLista();
+        while (paciente != nullptr) {
+            cout << "- " << paciente->getPaciente().getNombre() << endl;
+            paciente = paciente->getNext();
         }
-
-    }else{
-        //otro mensaje de que no se encontro
+    } else {
+        cout << "No existe el servicio: " << nombre << endl;
     }
+}
 
-    }
+void Hospital::mostrarHistorial() const {
+    historial.mostrar();
+}
 
-Hospital::~Hospital(){
+Hospital::~Hospital() {
     NodoServicio* cursor = primerServicio;
 
-    while(cursor!= nullptr){
+    while(cursor != nullptr) {
         NodoPaciente* paciente = cursor->getPacienteLista();
         NodoServicio* temporal = cursor;
-        while(paciente != nullptr){
-            NodoPaciente* temp = paciente;
 
+        while(paciente != nullptr) {
+            NodoPaciente* temp = paciente;
             paciente = paciente->getNext();
             delete temp;
-
-        }cursor = cursor->getNextServicio();
+        }
+        cursor = cursor->getNextServicio();
         delete temporal;
     }
-
 }

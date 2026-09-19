@@ -14,9 +14,13 @@ class Hospital {
 
         void derivarPaciente(Paciente p);//Segun el servicio se inserta el paciente en su lista interna
 
+        void atenderPaciente(Paciente p); //Segun el servicio se elimina el paciente de su lista interna y se agrega a la lista de historial
+
         void mostrarEstado(); //Recorre todos los servicios y muestra sus pacientes
 
         void mostrarServicio(string nombre); //Muestra los pacientes del servicio que se necesite
+
+        void mostrarHistorial() const; // Muestra el historial de atenciones 
 
         ~Hospital();
 

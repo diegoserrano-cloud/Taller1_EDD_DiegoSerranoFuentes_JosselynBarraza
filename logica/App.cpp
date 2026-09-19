@@ -11,7 +11,7 @@ class Nodo {
         int getDato() { return dato; }
         Nodo* getSiguiente() { return siguiente; }
         void setSiguiente(Nodo* nodo) { siguiente = nodo; }
-}
+};
 
 int main() {
     cout << "Hola Taller 1 "  << endl;
