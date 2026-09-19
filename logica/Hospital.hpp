@@ -20,8 +20,6 @@ class Hospital {
 
         void mostrarServicio(string nombre); //Muestra los pacientes del servicio que se necesite
 
-        void mostrarHistorial() const; // Muestra el historial de atenciones 
-
         ~Hospital();
 
 };

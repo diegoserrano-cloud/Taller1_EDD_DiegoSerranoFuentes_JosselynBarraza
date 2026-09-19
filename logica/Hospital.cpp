@@ -58,7 +58,7 @@ void Hospital::derivarPaciente(Paciente p) {
 
 void Hospital::atenderPaciente(Paciente p) {
     derivarPaciente(p);
-    historial.apilar(p);
+    //historial.apilar(p);
 }
 
 void Hospital::mostrarEstado(){
@@ -87,10 +87,6 @@ void Hospital::mostrarServicio(string nombre) {
     } else {
         cout << "No existe el servicio: " << nombre << endl;
     }
-}
-
-void Hospital::mostrarHistorial() const {
-    historial.mostrar();
 }
 
 Hospital::~Hospital() {
