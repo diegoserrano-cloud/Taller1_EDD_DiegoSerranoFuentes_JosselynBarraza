@@ -6,7 +6,7 @@ using namespace std;
 int main() {
     int opcion;
     Sistema sis;
-
+    sis.CargarArchivo("pacientes.txt");
     do{
       cout<<"=== HOSPITAL MARMAJA =="<<endl;
       cout<<"1. Atender pacientes"<<endl;
