@@ -39,6 +39,17 @@ void Cola::mostrar(){
     }
 }
 
+bool Cola::existeId(string id) const {
+    NodoPaciente* cursor = primero;
+    while (cursor != nullptr) {
+        if (cursor->getPaciente().getId() == id) {
+            return true; // Se encontró el ID
+        }
+        cursor = cursor->getNext();
+    }
+    return false; // No se encontró el ID
+}   
+
 Cola::~Cola(){
     while(!isEmpty()){
         eliminarPaciente();

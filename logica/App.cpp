@@ -17,9 +17,16 @@ int main() {
       cout<<"Seleccionar opción (debe estar entre 1 y 4): ";
       cin>>opcion;
       try{
-        //falta buscar una manera de controlar si ingresan una letra 
+        //falta buscar una manera de controlar si ingresan una letra
+        if(cin.fail()){
+            cin.clear();
+            cin.ignore(1000, '\n');
+            cout<<"ERROR: Ingrese un número entre 1 y 4"<<endl;
+            throw opcion;
+        }   
 
         if(opcion < 1 || opcion > 4){
+            cout<<"ERROR: Ingrese un número entre 1 y 4"<<endl;
             throw opcion;
         }
         switch(opcion){
@@ -28,8 +35,10 @@ int main() {
                 sis.mostrarPacientesEspera();
                 break;
             case 2:
+                sis.verDepartamento();  
                 break;
             case 3:
+                sis.revisarHistorial();
                 break;
             case 4:
                 cout<<"Saliendo....."<<endl;
