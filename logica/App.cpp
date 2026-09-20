@@ -3,10 +3,18 @@
 #include "Sistema.hpp"
 using namespace std;
 
+
 int main() {
     int opcion;
-    Sistema sis;
-    sis.CargarArchivo("pacientes.txt");
+    Sistema* sis = new Sistema();
+
+    if (!sis->CargarArchivo("pacientes.txt")) {
+        
+        delete sis;
+        return 1;
+    }
+   
+    
     do{
       cout<<"=== HOSPITAL MARMAJA =="<<endl;
       cout<<"1. Atender pacientes"<<endl;
@@ -32,13 +40,13 @@ int main() {
         switch(opcion){
             case 1:
                 cout<<"== PACIENTES EN ESPERA"<<endl;
-                sis.mostrarPacientesEspera();
+                sis->mostrarPacientesEspera();
                 break;
             case 2:
-                sis.verDepartamento();  
+                sis->verDepartamento();  
                 break;
             case 3:
-                sis.revisarHistorial();
+                sis->revisarHistorial();
                 break;
             case 4:
                 cout<<"Saliendo....."<<endl;

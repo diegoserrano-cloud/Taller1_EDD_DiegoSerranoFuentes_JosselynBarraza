@@ -6,12 +6,12 @@
 
 class Sistema{
     private:
-        Cola pendientes;
-        Stack atendidos;
-        Hospital hospital;
+        Cola* pendientes = new Cola();
+        Stack* atendidos = new Stack();
+        Hospital* hospital = new Hospital();
     public:
          void mostrarPacientesEspera();
-         void CargarArchivo(string arch);
+         bool CargarArchivo(string arch);
          void mostrarPacientesAtendidos();
          void revisarHistorial();
          void verDepartamento();

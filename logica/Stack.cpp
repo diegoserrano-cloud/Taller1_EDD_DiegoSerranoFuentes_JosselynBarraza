@@ -33,6 +33,7 @@ void Stack::mostrar() const {
         cursor->getPaciente().mostrarInfo();
         cursor = cursor->getNext();
     }
+    
 }
 
 Stack::~Stack() {

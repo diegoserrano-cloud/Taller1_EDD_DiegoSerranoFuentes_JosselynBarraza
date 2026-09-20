@@ -1,6 +1,6 @@
 #include "NodoServicio.hpp"
 
-NodoServicio::NodoServicio(string nombre) : nombre(nombre), primero(nullptr), next(nullptr) {}
+NodoServicio::NodoServicio(string nombre) : next(nullptr), primero(nullptr), nombre(nombre) {}
 
 string NodoServicio::getServicio() const{return nombre;}
 NodoServicio* NodoServicio::getNextServicio() const{return next;}

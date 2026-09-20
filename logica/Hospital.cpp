@@ -3,8 +3,8 @@
 using namespace std;
 
 Hospital::Hospital(){
-    string servicios[8] = {"Urgencias", "Medicina General", "Cardiología", "Neurología", 
-                            "Traumatología", "Cirugía", "Pediatría", "Hospitalización"};
+    string servicios[8] = {"Urgencias", "Medicina General", "Cardiologia", "Neurologia", 
+                            "Traumatologia", "Cirugia", "Pediatria", "Hospitalizacion"};
     
     NodoServicio* anterior = nullptr;
     primerServicio = nullptr;
@@ -58,7 +58,6 @@ void Hospital::derivarPaciente(Paciente p) {
 
 void Hospital::atenderPaciente(Paciente p) {
     derivarPaciente(p);
-    //historial.apilar(p);
 }
 
 void Hospital::mostrarEstado(){
