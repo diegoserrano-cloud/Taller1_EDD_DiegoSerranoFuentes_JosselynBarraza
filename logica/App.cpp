@@ -59,6 +59,7 @@ int main() {
       }
 
     }while(opcion != 4);
+    delete sis;
     return 0;
 
 }
