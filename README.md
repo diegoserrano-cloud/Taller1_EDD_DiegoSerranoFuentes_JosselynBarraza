@@ -20,7 +20,10 @@
 
 ### Instrucciones de compilación y ejecución
 1. Abrir una terminal (PowerShell/CMD) **en la carpeta raíz del proyecto** (donde está este README y el archivo `pacientes.txt`).
-2. Compilar todos los archivos fuente con:g++ logica\*.cpp -o menu.exe
+2. Compilar todos los archivos fuente con:
+  ```powershell
+  g++ -Wall -Wextra -g3 logica\App.cpp logica\Sistema.cpp dominio\Hospital.cpp dominio\Paciente.cpp dominio\Persona.cpp EDD\Cola.cpp EDD\Stack.cpp EDD\NodoPaciente.cpp EDD\NodoServicio.cpp -o menu.exe
+  ```
 3. Ejecutar con `.\menu.exe` desde la terminal integrada de VS Code (Ctrl + Ñ / Ctrl + `).
 4. El programa carga automáticamente `pacientes.txt` (debe estar en la misma carpeta raíz) y muestra el menú principal.
 5. Disfrutar del sistema :D

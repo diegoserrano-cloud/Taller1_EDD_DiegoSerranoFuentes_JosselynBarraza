@@ -57,7 +57,6 @@ bool Sistema::CargarArchivo(string arch){
     string linea;
     int cantLineas = 0;
     while(getline(archivo, linea)){
-        cout << "Leyendo línea: " << linea << endl; //borrar después de probar
         cantLineas++;
         if(linea.empty()) continue; // Ignorar líneas vacías o en blanco
 
