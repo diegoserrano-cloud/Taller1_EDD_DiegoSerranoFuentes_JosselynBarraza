@@ -1,5 +1,5 @@
 #pragma once
-#include "Paciente.hpp"
+#include "../dominio/Paciente.hpp"
 #include "NodoPaciente.hpp"
 
 class Cola{

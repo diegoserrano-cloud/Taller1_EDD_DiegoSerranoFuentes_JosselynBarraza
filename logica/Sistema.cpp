@@ -1,9 +1,9 @@
 #include "Sistema.hpp"
 #include <fstream> // Para leer archivos
 #include <iostream>
-#include "Stack.hpp"
-#include "Cola.hpp"
-#include "Hospital.hpp"
+#include "../EDD/Stack.hpp"
+#include "../EDD/Cola.hpp"
+#include "../dominio/Hospital.hpp"
 
 using namespace std;
 

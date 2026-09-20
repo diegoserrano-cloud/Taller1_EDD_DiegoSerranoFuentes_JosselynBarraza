@@ -1,8 +1,8 @@
 #pragma once
 
-#include "Hospital.hpp"
-#include "Cola.hpp"
-#include "Stack.hpp"
+#include "../dominio/Hospital.hpp"
+#include "../EDD/Cola.hpp"
+#include "../EDD/Stack.hpp"
 
 class Sistema{
     private:

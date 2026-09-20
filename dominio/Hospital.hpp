@@ -1,7 +1,7 @@
 #pragma once
 #include <string>
-#include "NodoServicio.hpp"
-#include "NodoPaciente.hpp"
+#include "../EDD/NodoServicio.hpp"
+#include "../EDD/NodoPaciente.hpp"
 using namespace std;
 
 class Hospital {
