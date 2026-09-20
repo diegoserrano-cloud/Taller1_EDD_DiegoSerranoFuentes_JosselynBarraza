@@ -20,6 +20,8 @@ class Hospital {
 
         void mostrarServicio(string nombre); //Muestra los pacientes del servicio que se necesite
 
+        int contarPacientes(string nombre);
+
         ~Hospital();
 
 };

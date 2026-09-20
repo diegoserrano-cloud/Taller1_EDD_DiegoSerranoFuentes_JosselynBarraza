@@ -41,6 +41,11 @@ int main() {
             case 1:
                 cout<<"== PACIENTES EN ESPERA"<<endl;
                 sis->mostrarPacientesEspera();
+                cout<<" "<< endl;
+                cout<<" Indique la cantidad de pacientes a atender: ";
+                int cantidad;
+                cin>>cantidad;
+                sis->atenderPaciente(cantidad);
                 break;
             case 2:
                 sis->verDepartamento();  

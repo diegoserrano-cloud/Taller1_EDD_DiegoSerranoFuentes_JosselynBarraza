@@ -80,12 +80,24 @@ void Hospital::mostrarServicio(string nombre) {
         cout << "Pacientes en el servicio " << nombre << ":" << endl;
         NodoPaciente* paciente = nodoServicio->getPacienteLista();
         while (paciente != nullptr) {
-            cout << "- " << paciente->getPaciente().getNombre() << endl;
+            cout <<paciente->getPaciente().getNombre() << " ("<<paciente->getPaciente().getEdad()<<")"<<endl;
             paciente = paciente->getNext();
         }
     } else {
         cout << "No existe el servicio: " << nombre << endl;
     }
+}
+
+int Hospital::contarPacientes(string nombre){
+    NodoServicio* nodoServicio = buscarServicio(nombre);
+    int cant = 0;
+    if (nodoServicio != nullptr) {
+        NodoPaciente* paciente = nodoServicio->getPacienteLista();
+        while (paciente != nullptr) {
+            cant++;
+            paciente = paciente->getNext();
+        }
+    }return cant;
 }
 
 Hospital::~Hospital() {

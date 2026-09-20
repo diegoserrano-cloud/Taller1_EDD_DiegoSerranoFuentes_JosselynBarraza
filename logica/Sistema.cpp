@@ -93,17 +93,97 @@ bool Sistema::CargarArchivo(string arch){
 
 
 void Sistema::verDepartamento(){
-    cout << "=== DEPARTAMENTO ===" << endl;
-    cout << "Pacientes en espera: " << endl;
-    pendientes->mostrar();
-    cout << "Pacientes atendidos: " << endl;
-    atendidos->mostrar();
+    cout<<" "<< endl;
+    cout << "=== DEPARTAMENTOS/SERVICIOS ===" << endl;
+    cout<<" "<< endl;
+    
+    cout<<"1. Urgencias \n"<<
+          "2. Medicina General \n"<<
+          "3. Cardiología \n"<<
+          "4. Neurología \n"<<
+          "5. Traumatología \n"<<
+          "6. Cirugía \n"<<
+          "7. Pediatria \n"<<
+          "8. Hospitalizacion "<<endl;
+    cout<<" "<< endl;
+    int op;
+    cin>>op;
+    if(op >= 1 && op <= 8){
+
+
+        if(op == 1){
+            cout<<"==== ESTADO URGENCIA ==="<<endl;
+            cout<<"Pacientes en el departamente de Urgencias: "<<hospital->contarPacientes("Urgencias")<<endl;
+            hospital->mostrarServicio("Urgencias");
+
+        }else if(op == 2){
+            cout<<"==== ESTADO MEDICINA GENERAL ==="<<endl;
+            cout<<"Pacientes en el departamente de Medicina General: "<<hospital->contarPacientes("Medicina General")<<endl;
+            hospital->mostrarServicio("Medicina General");
+
+        }else if(op == 3){
+            cout<<"==== ESTADO CARDIOLOGIA ==="<<endl;
+            cout<<"Pacientes en el departamente de Cardiologia: "<<hospital->contarPacientes("Cardiologia")<<endl;
+            hospital->mostrarServicio("Cardiologia");
+
+        }else if(op == 4){
+            cout<<"==== ESTADO NEUROLOGIA ==="<<endl;
+            cout<<"Pacientes en el departamente de Neurologia: "<<hospital->contarPacientes("Neurologia")<<endl;
+            hospital->mostrarServicio("Neurologia");
+
+        }else if(op == 5){
+            cout<<"==== ESTADO TRAUMATOLOGIA ==="<<endl;
+            cout<<"Pacientes en el departamente de Traumatologia: "<<hospital->contarPacientes("Traumatologia")<<endl;
+            hospital->mostrarServicio("Traumatologia");
+
+        }else if(op == 6){
+            cout<<"==== ESTADO CIRUGIA ==="<<endl;
+            cout<<"Pacientes en el departamente de Cirugia: "<<hospital->contarPacientes("Cirugia")<<endl;
+            hospital->mostrarServicio("Cirugia");
+
+        }else if(op == 7){
+            cout<<"==== ESTADO PEDIATRIA ==="<<endl;
+            cout<<"Pacientes en el departamente de Pediatria: "<<hospital->contarPacientes("Pediatria")<<endl;
+            hospital->mostrarServicio("Pediatria");
+
+        }else if(op == 8){
+            cout<<"==== ESTADO HOSPITALIZACION ==="<<endl;
+            cout<<"Pacientes en el departamente de Hospitalizacion: "<<hospital->contarPacientes("Hospitalizacion")<<endl;
+            hospital->mostrarServicio("Hospitalizacion");
+        }cout<<" "<<endl;
+    }else{
+        cout<<"Fuera del rango, SALIENDO.."<<endl;
+        return;
+    }
 }
 
 void Sistema::revisarHistorial(){
+    cout<<" "<< endl;
     cout << "=== HISTORIAL DE ATENCION ===" << endl;
     atendidos->mostrar();
 }
+
+void Sistema::atenderPaciente(int cantidad){
+    for(int i = 0; i< cantidad; i++){
+        if(pendientes->isEmpty()){
+            cout<<"Cantidad invalida, saliendo..."<<endl;
+            return;
+        }else{
+            Paciente p = pendientes->eliminarPaciente();
+            cout<<"=== Atendiendo Pacientes ==="<<endl;
+            cout<<"ID: "<< p.getId() <<endl;
+            cout<<"Nombre: "<<p.getNombre() <<endl;
+            cout<<"Edad: "<<p.getEdad() << endl;
+            cout<<"Servicio: "<<p.getServicio()<<endl;
+            cout<<" "<<endl;
+            cout<<"Paciente enviado a "<<p.getServicio()<<endl;
+            cout<<" "<<endl;
+            hospital->derivarPaciente(p);
+            atendidos->push(p);
+        }
+    }
+}
+
 
 Sistema::~Sistema(){
     delete pendientes;
