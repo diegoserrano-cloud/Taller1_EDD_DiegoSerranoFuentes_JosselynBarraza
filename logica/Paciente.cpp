@@ -14,7 +14,7 @@ void Paciente::setServicio(string nuevoServicio){
 }
 
 void Paciente::mostrarInfo() const{
-    cout << "ID: " << getId() << " - Nombre: " << getNombre()
-         << " - Edad: " << getEdad() << " - Servicio: " << servicio << endl;
+    cout << "ID: " << getId() << "| Nombre: " << getNombre()
+         << "| Edad: " << getEdad() << "| Departamento: " << servicio << endl;
 
 }
