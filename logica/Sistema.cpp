@@ -103,5 +103,11 @@ void Sistema::verDepartamento(){
 void Sistema::revisarHistorial(){
     cout << "=== HISTORIAL DE ATENCION ===" << endl;
     atendidos->mostrar();
-}   
+}
+
+Sistema::~Sistema(){
+    delete pendientes;
+    delete atendidos;
+    delete hospital;
+}
 

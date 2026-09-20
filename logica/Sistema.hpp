@@ -15,4 +15,5 @@ class Sistema{
          void mostrarPacientesAtendidos();
          void revisarHistorial();
          void verDepartamento();
+        ~Sistema();
 };
