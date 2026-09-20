@@ -54,8 +54,33 @@ void Sistema::CargarArchivo(string arch){
 
 }
 
-void separarLinea(const string& linea, string partes[4]) {
-    //Inserte logica. 
+/*
+* Esta función separa una línea en partes utilizando el delimitador ';' y almacena las partes en un arreglo de strings.
+* Devuelve true si se separaron exactamente 4 partes, de lo contrario devuelve false.
+* El "\0" al final de la línea indica el final de la cadena, por lo tanto el bucle se detiene cuando se alcanza ese carácter.
+*/
+bool separarLinea(const string& linea, string partes[4]) {
+    const char* inicio = linea.c_str();
+    const char* cursor = inicio;
+    int campoActual = 0;
+
+    while (*cursor != '\0' && campoActual < 4) {
+        const char* inicioCampo = cursor;
+
+        while (*cursor != ';' && *cursor != '\0') {
+            cursor++;
+        }
+
+        long largoCampo = cursor - inicioCampo;
+        partes[campoActual] = string(inicioCampo, largoCampo);
+        campoActual++;
+
+        if (*cursor == ';') {
+            cursor++;
+        }
+    }
+
+    return campoActual == 4;
 }
 
 void Sistema::verDepartamento(){

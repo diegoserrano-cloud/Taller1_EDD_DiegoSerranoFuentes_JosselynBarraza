@@ -17,7 +17,7 @@ int main() {
       cout<<"Seleccionar opción (debe estar entre 1 y 4): ";
       cin>>opcion;
       try{
-        //falta buscar una manera de controlar si ingresan una letra
+       
         if(cin.fail()){
             cin.clear();
             cin.ignore(1000, '\n');
